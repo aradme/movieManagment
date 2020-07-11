@@ -49,14 +49,6 @@ public class MovieController {
     @GetMapping("/actors/{id}/movie")
     public ResponseEntity<CollectionModel<EntityModel<MovieDTO>>> getMovieByActor(@PathVariable String id) {
         List<MovieDTO> moviesDTO;
-
-        if (price == null) {
-            moviesDTO = getProductsByOrder(id);
-        } else {
-            Double orderPrice = Double.valueOf(price);
-            moviesDTO = mapper.convertMovie(movieDB.fdAllProductsOfOrderWithLowerPrice(id, orderPrice));
-        }
-
         List<EntityModel<MovieDTO>> moviesEntityModel = new ArrayList<>();
         for (MovieDTO movieDTO : moviesDTO) {
             EntityModel<MovieDTO> movieEntityModel = movieEntityAdapter.toModel(movieDTO);
