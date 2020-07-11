@@ -54,7 +54,7 @@ public class MovieController {
             moviesDTO = getProductsByOrder(id);
         } else {
             Double orderPrice = Double.valueOf(price);
-            moviesDTO = mapper.convertMovie(movieDB.findAllProductsOfOrderWithLowerPrice(id, orderPrice));
+            moviesDTO = mapper.convertMovie(movieDB.fdAllProductsOfOrderWithLowerPrice(id, orderPrice));
         }
 
         List<EntityModel<MovieDTO>> moviesEntityModel = new ArrayList<>();
