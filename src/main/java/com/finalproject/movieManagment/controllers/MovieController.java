@@ -95,6 +95,10 @@ public class MovieController {
         return ResponseEntity.ok(movieEntityAdapter.toModel(movieDTO));
     }
 
+    //TODO: need to create a PutMapping and then the MovieController is finish
+    //TODO: to finish the MovieDAO we need one more
+    // GetMapping with new query, make a join between movies and rating and get movies with is rate.
+
     @DeleteMapping("/movie/{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable Long id){
         movieDB.deleteById(id);

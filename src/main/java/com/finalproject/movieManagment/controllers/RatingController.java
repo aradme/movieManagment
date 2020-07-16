@@ -47,6 +47,8 @@ public class RatingController {
                 linkTo(methodOn(MovieController.class).getAllMovies()).withSelfRel()));
     }
 
+    //TODO: need to create another GetMapping with some DB query
+
     @PostMapping("/rate")
     public ResponseEntity<EntityModel<RatingDTO>> addNewRating(@RequestBody Rating rating) {
         RatingDTO ratingDTO = new RatingDTO(ratingDB.save(rating));
@@ -59,21 +61,21 @@ public class RatingController {
             //if the findById doesn't work the getOne is working
             Rating newRate = ratingDB.findById(id).orElseThrow(() -> new RatingNotFoundException(id));
             if(newRate.getRate()<=10 && newRate.getRate()<rating.getRate() && rating.getRate() <=10){
-                //newRate.setRate(rating.getRate()/(newRate.getVotes()+1) + newRate.getRate());
                 newRate.setRate(((newRate.getRate()*newRate.getVotes())+rating.getRate())/(newRate.getVotes() + 1));
                 newRate.setVotes(newRate.getVotes() + 1);
-            }/*else if(newRate.getRate()<=10 && newRate.getRate()>rating.getRate()){
-                newRate.setRate(rating.getRate()/(newRate.getVotes()+1) - newRate.getRate());
-                newRate.setVotes(newRate.getVotes() + 1);
-            }*/else{
-                throw new RatingNotFoundException("Rate can not be bigger then 10 \n   Please enter a new Rate.");
+            }else{
+                throw new RatingNotFoundException("Rate can not be bigger then 10\n\tPlease enter a new Rate.");
             }
             RatingDTO ratingDTO = new RatingDTO(ratingDB.save(newRate));
             return ResponseEntity.ok(ratingEntityAdapter.toModel(ratingDTO));
         }catch (Exception e){
-            throw new RatingNotFoundException("Rate can not be bigger then 10 or Null! \n Please enter a new Rate.");
+            throw new RatingNotFoundException("Rate can not be Null!\n\tPlease enter a new Rate.");
         }
     }
+    //TODO: fix delete function.
+    // delete a row in the table
+    // or delete a rating and put the previous one.
+    // need to check with Danny.
 
     /*@DeleteMapping("/rate/movie/{id}")
     public ResponseEntity<EntityModel<RatingDTO>> deleteRate(@PathVariable Long id) {

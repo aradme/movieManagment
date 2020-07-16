@@ -63,6 +63,8 @@ public class ActorController {
         return ResponseEntity.ok(new CollectionModel<>(moviesEntityModel,
                 linkTo(methodOn(MovieController.class).getAllMovies()).withSelfRel()));
     }
+    //TODO: need to create another GetMapping with some DB query
+    //TODO: need to create PutMapping request
 
     @PostMapping("/actors")
     public ResponseEntity<EntityModel<ActorDTO>> addNewActor(@RequestBody Actor actor) {
