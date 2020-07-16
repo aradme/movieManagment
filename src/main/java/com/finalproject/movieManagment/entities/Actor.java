@@ -5,32 +5,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "actors")
+@Entity
+@Table(name = "actors")
 public class Actor {
 
     @Id
-    @GeneratedValue
-    private String nconst;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String primaryName;
+    private String actorName;
 
-    private double birthYear;
+    private LocalDate birthYear;
 
-    private double deathYear;
+    private LocalDate deathYear;
 
-    private String primaryProfession;
+    private String knownFor;
 
-    private String knownForTitles;
-
-    @ManyToMany
-    @JoinTable(name = "movie_actors", joinColumns = {
-            @JoinColumn(name = "actor_id") },
-            inverseJoinColumns = {
-            @JoinColumn(name = "movie_id") })
+    @ManyToMany(mappedBy = "actors")
     private List<Movie> movies;
 }

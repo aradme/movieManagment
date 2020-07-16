@@ -31,7 +31,7 @@ public class Mapper {
         return actorDTO;
     }
 
-    /*public List<RatingDTO> convertRating(List<Rating> ratings) {
+    public List<RatingDTO> convertRating(List<Rating> ratings) {
         List<RatingDTO> ratingDTO = new ArrayList<RatingDTO>();
 
         for (Rating rating : ratings) {
@@ -39,6 +39,6 @@ public class Mapper {
         }
 
         return ratingDTO;
-    }*/
+    }
 
 }

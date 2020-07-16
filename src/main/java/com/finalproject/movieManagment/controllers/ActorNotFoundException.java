@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class MovieNotFoundException extends RuntimeException {
+public class ActorNotFoundException extends RuntimeException {
     @ControllerAdvice
-    static class MovieNotFoundHandler {
+    static class ActorNotFoundHandler {
         @ResponseBody //this advice is rendered straight into the response body.
-        @ExceptionHandler(MovieNotFoundException.class)
+        @ExceptionHandler(ActorNotFoundException.class)
         //configures the advice to only respond if an ProductNotFoundException
         @ResponseStatus(HttpStatus.NOT_FOUND)
-        String MovieNotFoundHandler(MovieNotFoundException ex) {
+        String ActorNotFoundHandler(ActorNotFoundException ex) {
             return ex.getMessage();
         }
     }
 
-    MovieNotFoundException(Long id) {
-        super("Movie " + id + " was not found");
+    ActorNotFoundException(Long id) {
+        super("Actor " + id + " was not found");
     }
-    MovieNotFoundException(String message){super(message);}
 }

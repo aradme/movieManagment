@@ -3,29 +3,33 @@ package com.finalproject.movieManagment.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.finalproject.movieManagment.entities.Actor;
+import com.finalproject.movieManagment.entities.Movie;
 import lombok.Value;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Value
-@JsonPropertyOrder({"actor name", "birth year", "death year","known for movies"})
+@JsonPropertyOrder({"Actor Name", "Birth Date","Death Date","Known For Movie"})
 public class ActorDTO {
 
     @JsonIgnore
     private Actor actor;
 
     public String getActorName(){
-        return this.actor.getPrimaryName();
+        return this.actor.getActorName();
     }
 
-    public double getActorBirthYear(){
+    public LocalDate getActorBirthYear(){
         return this.actor.getBirthYear();
     }
 
-    public double getActorDeathYear(){
+    public LocalDate getActorDeathYear(){
         return this.actor.getDeathYear();
     }
 
     public String getActorKnownForMovies(){
-        return this.actor.getKnownForTitles();
+        return this.actor.getKnownFor();
     }
 
 

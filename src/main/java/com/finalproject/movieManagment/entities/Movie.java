@@ -2,39 +2,37 @@ package com.finalproject.movieManagment.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "listofmovies")
+@Entity
+@Table(name = "movies")
 public class Movie {
 
     @Id
-    @GeneratedValue
-    private String tconst;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String titleType;
+    private String movieTitle;
 
-    private String originalTitle;
+    private LocalDate ReleaseDate;
 
-    private String primaryTitle;
+    private double duration;
 
-    private double isAdult;
+    private String genre;
 
-    private double startYear;
+    @ManyToOne
+    private Rating rating;
 
-    private String endYear;
-
-    private double runtimeMinutes;
-
-    private String genres;
-
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany
+    @JoinTable(name = "movies_actors", joinColumns = {
+            @JoinColumn(name = "movies_id") },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "actors_id") })
     private List<Actor> actors;
 
 }

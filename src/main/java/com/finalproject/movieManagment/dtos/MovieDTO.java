@@ -4,30 +4,35 @@ package com.finalproject.movieManagment.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.finalproject.movieManagment.entities.Movie;
+import com.finalproject.movieManagment.entities.Rating;
 import lombok.Value;
 
+import java.time.LocalDate;
+
 @Value
-@JsonPropertyOrder({"movie name", "release date", "duration","genres"})
+@JsonPropertyOrder({"movie name", "release date", "duration","genre"})
 public class MovieDTO {
 
     @JsonIgnore
     private Movie movie;
 
 
-    public String getPrimaryTitle() {
-        return this.movie.getPrimaryTitle();
+    public String getMovieTitle() {
+        return this.movie.getMovieTitle();
     }
 
-    public double getStartYear() {
-        return this.movie.getStartYear();
+    public LocalDate getRuntimeMinutes() {
+        return this.movie.getReleaseDate();
     }
 
-    public double getRuntimeMinutes() {
-        return this.movie.getRuntimeMinutes();
+    public double getDuration() {
+        return this.movie.getDuration();
     }
 
     public String getGenres() {
-        return this.movie.getGenres();
+        return this.movie.getGenre();
     }
+
+    //public Rating getRate(){return this.movie.getRating();}
 
 }
