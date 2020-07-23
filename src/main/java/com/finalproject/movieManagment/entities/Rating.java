@@ -22,6 +22,6 @@ public class Rating {
 
     private Long votes;
 
-    @OneToMany(mappedBy = "rating")
+    @OneToMany(mappedBy = "rating",cascade = CascadeType.ALL)
     private List<Movie> movies;
 }

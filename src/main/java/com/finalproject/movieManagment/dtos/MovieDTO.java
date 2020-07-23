@@ -17,11 +17,11 @@ public class MovieDTO {
     private Movie movie;
 
 
-    public String getMovieTitle() {
+    public String getMovieName() {
         return this.movie.getMovieTitle();
     }
 
-    public LocalDate getRuntimeMinutes() {
+    public LocalDate getReleaseDate() {
         return this.movie.getReleaseDate();
     }
 
@@ -32,7 +32,5 @@ public class MovieDTO {
     public String getGenres() {
         return this.movie.getGenre();
     }
-
-    //public Rating getRate(){return this.movie.getRating();}
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class Mapper {
 
     public List<MovieDTO> convertMovie(List<Movie> movies) {
-        List<MovieDTO> movieDTO = new ArrayList<MovieDTO>();
+        List<MovieDTO> movieDTO = new ArrayList<>();
 
         for (Movie movie : movies) {
             movieDTO.add(new MovieDTO(movie));
@@ -22,7 +22,7 @@ public class Mapper {
     }
 
     public List<ActorDTO> convertActors(List<Actor> actors) {
-        List<ActorDTO> actorDTO = new ArrayList<ActorDTO>();
+        List<ActorDTO> actorDTO = new ArrayList<>();
 
         for (Actor actor : actors) {
             actorDTO.add(new ActorDTO(actor));
@@ -32,7 +32,7 @@ public class Mapper {
     }
 
     public List<RatingDTO> convertRating(List<Rating> ratings) {
-        List<RatingDTO> ratingDTO = new ArrayList<RatingDTO>();
+        List<RatingDTO> ratingDTO = new ArrayList<>();
 
         for (Rating rating : ratings) {
             ratingDTO.add(new RatingDTO(rating));

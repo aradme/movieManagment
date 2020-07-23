@@ -22,4 +22,5 @@ public class ActorNotFoundException extends RuntimeException {
     ActorNotFoundException(Long id) {
         super("Actor " + id + " was not found");
     }
+    ActorNotFoundException(String message){super(message);}
 }

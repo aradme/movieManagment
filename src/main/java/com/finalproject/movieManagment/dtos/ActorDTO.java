@@ -20,11 +20,11 @@ public class ActorDTO {
         return this.actor.getActorName();
     }
 
-    public LocalDate getActorBirthYear(){
+    public LocalDate getActorBirthDate(){
         return this.actor.getBirthYear();
     }
 
-    public LocalDate getActorDeathYear(){
+    public LocalDate getActorDeathDate(){
         return this.actor.getDeathYear();
     }
 
