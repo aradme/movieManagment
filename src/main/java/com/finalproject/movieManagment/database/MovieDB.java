@@ -19,4 +19,3 @@ public interface MovieDB extends JpaRepository<Movie, Long> {
 }
 
 
-//select movies.movieTitle, rating.rate from movies JOIN rating ON rating.id = rating_id
